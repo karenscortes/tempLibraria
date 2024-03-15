@@ -290,23 +290,71 @@ public class RegistroUsuario extends javax.swing.JPanel {
     private void btnRegistrarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUserActionPerformed
 
         if(campoNombre.getText().equals("") || campoTelefono.getText().equals("") || campoCorreo.getText().equals("") || campoContrasenia.getText().equals("")){
-            /*ALERTA campos vacíos */
+            Alerta ventana = new Alerta("Se deben ingresar todos los campos solicitados");
         }else{
             
             String nombre = campoNombre.getText();
             String telefono = campoTelefono.getText();
             String correo = campoCorreo.getText();
             String contrasenia = campoContrasenia.getText();
-            Boolean result_insert = baseDatos.insertarPersona(correo,nombre, telefono, tipoUsuario,contrasenia);
             
-            if(result_insert){
-                /* ALERTA DE REGISTRO EXITOSO */
-            }else{
-                /* ALERTA DE "NO SE PUDO REALIZAR EL REGISTRO" */
-            }    
+            boolean bandera = criteriosPassword(contrasenia);
+            if(bandera = true){
+               Boolean result_insert = baseDatos.insertarPersona(correo,nombre, telefono, tipoUsuario,contrasenia); 
+               
+                if(result_insert){
+                    Alerta ventana = new Alerta("Se ha registrado con exito");
+                }else{
+                    /* ALERTA DE "NO SE PUDO REALIZAR EL REGISTRO" */
+                }
+            }
+                
         }
     }//GEN-LAST:event_btnRegistrarUserActionPerformed
-
+    
+    public boolean criteriosPassword(String password){
+        int size = 0;
+        int criterios =0;
+        int cantidadNumeros = 0;
+        int cantidadMayusculas = 0;
+        boolean bandera = false;
+        
+        for (int i = 0; i < password.length(); i++) {
+            size++;
+            char caracter = password.charAt(i);
+            if (Character.isDigit(caracter)) {
+                cantidadNumeros++;
+            } else if (Character.isUpperCase(caracter)) {
+                cantidadMayusculas++;
+            }
+        }
+        
+        if(size>=8){
+            criterios++;
+        }else{
+           Alerta ventana = new Alerta("La contraseña debe tener minimo 8 caracteres");
+        }
+        
+        if(cantidadMayusculas>0){
+            criterios++;
+        }else{
+           Alerta ventana = new Alerta("La contraseña debe contar con un caracter mayúscula");
+        }
+        
+        if(cantidadNumeros>0){
+            criterios++;
+        }else{
+           Alerta ventana = new Alerta("La contraseña debe tener valores numéricos");
+        }
+        
+        if(criterios ==3){
+            bandera = true;
+        }else{
+            bandera = false;
+        }
+        
+        return bandera;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarUser;
