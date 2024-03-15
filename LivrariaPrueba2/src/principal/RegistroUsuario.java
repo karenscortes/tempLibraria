@@ -296,7 +296,7 @@ public class RegistroUsuario extends javax.swing.JPanel {
             String nombre = campoNombre.getText();
             String telefono = campoTelefono.getText();
             String correo = campoCorreo.getText();
-            String contrasenia = campoContrasenia.getText();
+            String contrasenia = baseDatos.getMD5(campoContrasenia.getText());
             
             boolean bandera = criteriosPassword(contrasenia);
             if(bandera = true){

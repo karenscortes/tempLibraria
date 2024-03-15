@@ -1,5 +1,8 @@
 package utils;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -200,4 +203,27 @@ public class BaseDatos {
         return manipularDB;
     }
     
+    public String getMD5(String input) {
+        try {
+          // Obtener una instancia del algoritmo MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+          // Convertir el String a bytes
+          byte[] messageDigest = md.digest(input.getBytes());
+
+          // Convertir los bytes a un String hexadecimal
+            BigInteger number = new BigInteger(1, messageDigest);
+          String hashtext = number.toString(16);
+
+          // Añadir ceros a la izquierda si es necesario
+          while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+          }
+
+          // Devolver el hash MD5
+          return hashtext;
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
