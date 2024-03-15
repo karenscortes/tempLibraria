@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 
 public class PanelRounde extends javax.swing.JPanel {
 
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,9 +75,9 @@ public class PanelRounde extends javax.swing.JPanel {
 
 
     @Override
-    protected void paintComponent(Graphics grphcs) {
-        Graphics2D g2 = (Graphics2D) grphcs.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    protected void paintComponent(Graphics grphcs) { 
+        Graphics2D g2 = (Graphics2D) grphcs.create(); 
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 
         g2.setColor(getBackground());
         Area area = new Area(createRoundTopLeft());
         if (roundTopRight > 0) {

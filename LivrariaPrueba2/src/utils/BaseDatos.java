@@ -23,6 +23,7 @@ public class BaseDatos {
             conexion = DriverManager.getConnection(url, user, password);
             manipularDB = conexion.createStatement();
             System.out.println("Conexion exitosa.");
+            
         } catch (SQLException ex) {
             System.out.println("Error en conexion a BD:");
             System.out.println(ex.getMessage());
@@ -47,6 +48,7 @@ public class BaseDatos {
 	    System.out.println("Error al buscar el cliente: "+ex.getMessage());
 	}   
     }
+    
     /*
     public Persona[] extraerPersonas(){
         try {
@@ -79,10 +81,30 @@ public class BaseDatos {
         }
     }
     */
-    public boolean insertarPersona(String cedula,String nombre, String telefono,String tipoUsuario, String correo, String contrasenia){
+    
+    public String[] consultaLogin(String correo){
+        String arrayInfo[];
+        try {
+            String consulta = "SELECT * FROM usuario WHERE correo='"+correo+"'";
+            ResultSet registros = manipularDB.executeQuery(consulta);
+            registros.next();       
+            if (registros.getRow()==1) {
+                String password = registros.getString("passwords");      
+                arrayInfo = new String[]{correo,password};
+                return  arrayInfo;
+            }
+        } catch (SQLException ex) {
+            System.out.println("--> Error al realizar la consulta: " + ex.getMessage());
+            return null; 
+        }
+        
+        return null;
+    }
+    
+    public boolean insertarPersona(String correo, String nombre, String telefono,String tipoUsuario, String contrasenia){
         boolean respuesta = false;
         try {
-            String consulta = "INSERT INTO usuario (documento,nombre_completo, telefono, tipo, correo, contraseña) VALUES ('"+cedula+"','"+nombre+"','"+telefono+"','"+tipoUsuario+"','"+correo+"','"+contrasenia+"')";
+            String consulta = "INSERT INTO usuario (correo,nombre,telefono,tipo,passwords) VALUES ('"+correo+"','"+nombre+"','"+telefono+"','"+tipoUsuario+"','"+contrasenia+"')";
             int resp_consulta = manipularDB.executeUpdate(consulta);
             if (resp_consulta==1) {
                 respuesta = true;
@@ -97,6 +119,7 @@ public class BaseDatos {
         }
         return respuesta;
     }
+    
     /*
      public Persona buscarPersona(String cedula){ //una funcion devuelve un solo tipo de dato
                                                                                 

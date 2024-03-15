@@ -8,13 +8,14 @@ import utils.BaseDatos;
 
 
 public class IniciarSesion extends javax.swing.JPanel {
-
     BaseDatos baseDatos;
+    private String correo;
+    private String password;
+    
     public IniciarSesion(BaseDatos baseDatos) {
         this.baseDatos = baseDatos;
        initComponents();
-       initAlterComponents();
-         
+       initAlterComponents();    
     }
     
     public void initAlterComponents(){
@@ -22,10 +23,19 @@ public class IniciarSesion extends javax.swing.JPanel {
         icon_userRegistro = icon_userRegistro.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         etqImageUser.setIcon(new ImageIcon(icon_userRegistro));
     }
-    
-    
-
-    
+      
+    public boolean validarCredenciales(){
+       Boolean respuesta = false;
+       String validacion[] = baseDatos.consultaLogin(this.correo);
+       if(validacion != null){
+            if(validacion[0].equals(correo) && validacion[1].equals(password)){
+                respuesta = true;
+                return respuesta;  
+            }
+        }   
+       return respuesta; 
+    }
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -172,8 +182,7 @@ public class IniciarSesion extends javax.swing.JPanel {
 
     private void etqBtnIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etqBtnIngresarMouseExited
         btnIniciar.setBackground(new Color(0,0,0,255));
-        etqBtnIngresar.setForeground(new Color(255,255,255,255));
-            
+        etqBtnIngresar.setForeground(new Color(255,255,255,255));     
     }//GEN-LAST:event_etqBtnIngresarMouseExited
 
     private void campoUserNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoUserNameMousePressed
@@ -199,14 +208,24 @@ public class IniciarSesion extends javax.swing.JPanel {
     }//GEN-LAST:event_campoContraseniaMousePressed
 
     private void etqBtnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_etqBtnIngresarMouseClicked
-        //CODIGO PARA HACER LOGIN
+        correo = campoUserName.getText(); 
+        char passwor []= campoContrasenia.getPassword();  
+        password = new String(passwor);
+        
+        campoUserName.setText("Ingrese su nombre de usuario");
+        campoUserName.setForeground(Color.gray);
+        campoContrasenia.setText("********");
+        campoContrasenia.setForeground(Color.gray);
+        panelRounde1.requestFocus();
+  
+        boolean band = validarCredenciales();
+        if(band){
+            System.out.println("Las credenciales coinciden");
+        }else{
+            System.out.println("Error -> Usuario y contraseñas incorrectos");
+        }
     }//GEN-LAST:event_etqBtnIngresarMouseClicked
 
-    
-    
-    
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnIniciar;
     private javax.swing.JPasswordField campoContrasenia;

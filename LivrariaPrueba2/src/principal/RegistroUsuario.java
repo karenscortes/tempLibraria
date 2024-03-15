@@ -9,8 +9,8 @@ import utils.BaseDatos;
 public class RegistroUsuario extends javax.swing.JPanel {
 
     BaseDatos baseDatos;
-    
     String tipoUsuario;
+    
     public RegistroUsuario(BaseDatos baseDatos) {
         this.baseDatos = baseDatos;
         initComponents();
@@ -283,11 +283,8 @@ public class RegistroUsuario extends javax.swing.JPanel {
                 tipoUsuario = "Cliente";
                 break;
             default:
-                tipoUsuario = "Cliente";      
+                tipoUsuario = "Cliente";
         }
-        
-           
-    
     }//GEN-LAST:event_selectTipoActionPerformed
 
     private void btnRegistrarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUserActionPerformed
@@ -297,18 +294,16 @@ public class RegistroUsuario extends javax.swing.JPanel {
         }else{
             
             String nombre = campoNombre.getText();
-            String cedula = "12224";
             String telefono = campoTelefono.getText();
             String correo = campoCorreo.getText();
             String contrasenia = campoContrasenia.getText();
-            Boolean result_insert = baseDatos.insertarPersona(cedula,nombre, telefono, tipoUsuario, correo, contrasenia);
+            Boolean result_insert = baseDatos.insertarPersona(correo,nombre, telefono, tipoUsuario,contrasenia);
             
             if(result_insert){
                 /* ALERTA DE REGISTRO EXITOSO */
             }else{
                 /* ALERTA DE "NO SE PUDO REALIZAR EL REGISTRO" */
-            }
-            
+            }    
         }
     }//GEN-LAST:event_btnRegistrarUserActionPerformed
 
