@@ -28,7 +28,7 @@ public class IniciarSesion extends javax.swing.JPanel {
        Boolean respuesta = false;
        String validacion[] = baseDatos.consultaLogin(this.correo);
        if(validacion != null){
-            if(validacion[0].equals(correo) && validacion[1].equals(password)){
+            if(validacion[0].equals(correo) && validacion[1].equals(baseDatos.getMD5(password))){
                 respuesta = true;
                 return respuesta;  
             }

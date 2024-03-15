@@ -58,14 +58,14 @@ public class Alerta extends javax.swing.JFrame {
                 .addGroup(contPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contPrincipalLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(etqAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(etqAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(contPrincipalLayout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(btncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(149, 149, 149)
+                        .addComponent(etqTitulo))
                     .addGroup(contPrincipalLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(etqTitulo)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(158, 158, 158)
+                        .addComponent(btncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         contPrincipalLayout.setVerticalGroup(
             contPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,9 +74,9 @@ public class Alerta extends javax.swing.JFrame {
                 .addComponent(etqTitulo)
                 .addGap(18, 18, 18)
                 .addComponent(etqAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btncerrar)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout contbgLayout = new javax.swing.GroupLayout(contbg);
@@ -85,8 +85,8 @@ public class Alerta extends javax.swing.JFrame {
             contbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contbgLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(contPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(contPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         contbgLayout.setVerticalGroup(
             contbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,8 +102,8 @@ public class Alerta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contbg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contbg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
